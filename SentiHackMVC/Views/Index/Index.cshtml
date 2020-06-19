@@ -1,0 +1,36 @@
+﻿@model News
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<div class="container">
+    <h1 class="text-center">Weather Widget</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            @foreach (News n in Model.NewsList)
+            {
+                <li>
+
+                </li>
+            }
+
+            <li class="media">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">List-based media object</h5>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </li>
+        </div>
+    </div>
+</div>
