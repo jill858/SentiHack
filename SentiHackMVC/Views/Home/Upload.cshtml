@@ -3,10 +3,58 @@
 *@
 @{
 }
-<script type="text/javascript" src="~/js/Upload.js"></script>
+
 <p>Select local CSV File:</p>
 <input id="csv" type="file">
 
 <output id="out">
     file contents will appear here
 </output>
+
+<!--<script type="text/javascript" src="~/js/Upload.js">
+    readCSV();
+</script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<script>
+    var fileInput = document.getElementById("csv"),
+
+        readFile = function () {
+            var reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('out').innerHTML = reader.result;
+            };
+            // start reading the file. When it is done, calls the onload event defined above.
+            reader.readAsBinaryString(fileInput.files[0]);
+        };
+
+    fileInput.addEventListener('change', readFile);
+
+
+    var settings = {
+        "url": "https://apis.sentient.io/microservices/utility/csvtojson/v1.0/getresults",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "x-api-key": "C0DD235378A94213B9BF",
+            "Content-Type": "text/csv"
+        },
+        "data": fileInput
+    };
+
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+</script>
+
+<style>
+    output {
+        display: block;
+        margin-top: 4em;
+        font-family: monospace;
+        font-size: .8em;
+    }
+</style>
