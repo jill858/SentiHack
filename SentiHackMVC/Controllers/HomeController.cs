@@ -36,6 +36,7 @@ namespace SentiHackMVC.Controllers
 
         public IActionResult Upload()
         {
+            client.BaseAddress = new Uri("https://apis.sentient.io/microservices/utility/csvtojson/v1.0/getresults");
             return View();
         }
     }

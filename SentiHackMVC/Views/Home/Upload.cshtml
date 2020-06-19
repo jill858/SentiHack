@@ -3,13 +3,19 @@
 *@
 @{
 }
+@{
+    ViewData["Title"] = "Upload";
+}
+    <form>
+        <p>Select local CSV File:</p>
+        <input id="csv" type="file">
+        <button onclick="upload()">Upload</button>
+        <output id="out">
+            file contents will appear here
+        </output>
 
-<p>Select local CSV File:</p>
-<input id="csv" type="file">
+    </form>
 
-<output id="out">
-    file contents will appear here
-</output>
 
 <!--<script type="text/javascript" src="~/js/Upload.js">
     readCSV();
@@ -32,22 +38,23 @@
 
     fileInput.addEventListener('change', readFile);
 
+    function upload() {
+        var settings = {
+            "url": "https://apis.sentient.io/microservices/utility/csvtojson/v1.0/getresults",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "x-api-key": "C0DD235378A94213B9BF",
+                "Content-Type": "text/csv"
+            },
+            "data": fileInput
+        };
 
-    var settings = {
-        "url": "https://apis.sentient.io/microservices/utility/csvtojson/v1.0/getresults",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "x-api-key": "C0DD235378A94213B9BF",
-            "Content-Type": "text/csv"
-        },
-        "data": fileInput
-    };
 
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
 </script>
 
 <style>
