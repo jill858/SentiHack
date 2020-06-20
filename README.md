@@ -61,6 +61,17 @@ Software needed:
 
 Visual Studio 2019
 
-1. Clone the project 
+1. Clone the project - SenticHack
 2. Open Visual Studio 2019 and select "Open project or solution"
-3. Browse to the location of the file you have downloaded
+3. Browse to the location of the file you have downloaded, and browse to
+
+    > SentiHack 
+
+    And you will find SentiHack.sln (Visual Studio Solution)
+
+4. Select the solution 
+5. Before running, select "SentiHackMVC"
+
+    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5e5fdf23-efb8-4a74-9140-5a90c21461dc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5e5fdf23-efb8-4a74-9140-5a90c21461dc/Untitled.png)
+
+6. To run, press "IIS Express"
