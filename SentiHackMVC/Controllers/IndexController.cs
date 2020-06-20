@@ -97,7 +97,7 @@ namespace SentiHackMVC.Controllers
 
         }
 
-        public async Task<byte[]> GetNewsAudio(string audioText)
+        public byte[] GetNewsAudio(string audioText)
         {
             // Text-To-Speech ENG key
             string key = "AEF4404077714656A317";
@@ -112,8 +112,9 @@ namespace SentiHackMVC.Controllers
             var request = new RestRequest(Method.POST);
             request.AddHeader("x-api-key", key);
             request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", "{\"text\": \"I like to eat.\"\n}", ParameterType.RequestBody);
+            request.AddParameter("application/json", payLoad.ToString(), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
+
             string stringResponse = response.Content;
             string first64 = response.Content.Substring(0, 64);
 
