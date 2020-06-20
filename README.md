@@ -70,8 +70,6 @@ Visual Studio 2019
     And you will find SentiHack.sln (Visual Studio Solution)
 
 4. Select the solution 
-5. Before running, select "SentiHackMVC"
-
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5e5fdf23-efb8-4a74-9140-5a90c21461dc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5e5fdf23-efb8-4a74-9140-5a90c21461dc/Untitled.png)
+5. Before running, select "SentiHackMVC" (refer to Image.jpg)
 
 6. To run, press "IIS Express"
