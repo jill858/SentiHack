@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using RestSharp;
 using SentiHackMVC.Models;
 
 namespace SentiHackMVC.Controllers
@@ -42,13 +44,18 @@ namespace SentiHackMVC.Controllers
                     Author = (string)x["author"],
                     Title = (string)x["title"],
                     Description = (string)x["description"],
+                    Words = FirstXWords((string)x["description"], 15),
                     Link = (string)x["url"],
                     PublishDate = ConvertToDateTime((string)x["publishedAt"]),
                     Content = (string)x["content"]
                 }).ToList();
             }
 
-            return newsList;
+            List<News> cnaList = (from news in newsList
+                                  where news.SourceType == "CNA"
+                                  select news).ToList();
+
+            return cnaList;
 
         }
 
@@ -82,6 +89,37 @@ namespace SentiHackMVC.Controllers
             DateTime dt = new DateTime(year, month, date, hour, min, sec);
 
             return dt;
+        }
+        public string FirstXWords(string text, int num)
+        {
+            string firstTenWords = String.Join(" ", text.Split().Take(num).ToArray());
+            return firstTenWords + " ...";
+
+        }
+
+        public async Task<byte[]> GetNewsAudio(string audioText)
+        {
+            // Text-To-Speech ENG key
+            string key = "AEF4404077714656A317";
+            string url = "https://api.sentient.io/tts/prod/ttseng";
+
+            JObject payLoad = new JObject(
+                new JProperty("text", audioText)
+            );
+
+            var client = new RestClient(url);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("x-api-key", key);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", "{\"text\": \"I like to eat.\"\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            string stringResponse = response.Content;
+            string first64 = response.Content.Substring(0, 64);
+
+            byte[] audioByteArr = Convert.FromBase64String(first64);            
+
+            return audioByteArr;
         }
     }
 }

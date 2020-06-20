@@ -13,6 +13,7 @@ namespace SentiHackMVC.Models
         private string title;
         private string description;
         private string content;
+        private string words;
         private DateTime publishDate;
         private int minDifference;
 
@@ -111,6 +112,18 @@ namespace SentiHackMVC.Models
             get
             {
                 return publishDate;
+            }
+        }
+
+        public string Words
+        {
+            set
+            {
+                this.words = value;
+            }
+            get
+            {
+                return words;
             }
         }
 
