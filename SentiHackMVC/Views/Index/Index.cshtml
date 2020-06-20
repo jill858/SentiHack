@@ -18,19 +18,26 @@
             One of three columns
         </div>
         <div class="col-sm">
-            @foreach (News n in Model.NewsList)
-            {
-                <li>
+            <h3 class="text-center">Top News</h3>
 
+            @for (var i = 0; i < 3; i++)
+            {
+                <li class="media">
+                    <div class="media-body">
+                        <h5 class="mt-2 mb-2">@Model.NewsList[i].Title</h5>
+                        @Model.NewsList[i].Words
+                    </div>
                 </li>
+                <article class="audio">
+                    <audio controls>
+                        <source src="@Url.Action("GetNewsAudio", "Index", new { audioText = Model.NewsList[i].Content })" type="audio/mp3" />
+                        <p>Your browser does not support HTML 5 audio element</p>
+                    </audio>
+                </article>
+
+                <br />
             }
 
-            <li class="media">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">List-based media object</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-            </li>
         </div>
     </div>
 </div>
