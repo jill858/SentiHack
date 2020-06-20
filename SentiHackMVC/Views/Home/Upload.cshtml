@@ -6,15 +6,20 @@
 @{
     ViewData["Title"] = "Upload";
 }
-    <form>
-        <p>Select local CSV File:</p>
-        <input id="csv" type="file">
-        <button onclick="upload()">Upload</button>
-        <output id="out">
-            file contents will appear here
-        </output>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
+<form>
+    <p>Select local CSV File:</p>
+    <input id="csv" type="file">
+    <button onclick="upload()">Upload</button>
+    <output id="out">
+        file contents will appear here
+    </output>
 
-    </form>
+</form>
 
 
 <!--<script type="text/javascript" src="~/js/Upload.js">
