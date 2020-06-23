@@ -35,6 +35,17 @@ However, due to time constraint, we have only managed to complete
 - News Section with the ability to read the content of the news
 - Ability to upload CSV file, convert to JSON and then display out as table
 
+**Sentient Hackathon API Used**
+
+- Text-To-Speech ENG
+- CSV-JSON Utility
+
+**Other 3rd Party API Used**
+
+- News API
+
+---
+
 ## Further Development
 
 How could this be further developed
@@ -43,17 +54,6 @@ group/department/organization/school
 
 - Create charts of how often people people logged in their temperature
 - User giving access to their past 3 days temperature record to organization/companies
-
-Sentient Hackathon API Used
-
-- Text-To-Speech ENG
-- CSV-JSON Utility
-
-Other 3rd Party API Used 
-
-- News API
-
----
 
 ## Instructions to Run
 
